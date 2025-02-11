@@ -541,7 +541,7 @@ using namespace std;
 //	return 0;
 //}
 
-//优化
+//优化一下 
 #include <cmath>
 int main()
 {
@@ -567,6 +567,7 @@ int main()
 		 {
 		 	cnt++;
 		 }
+		 
 		 
 		 if (cnt == n)
 		 {
