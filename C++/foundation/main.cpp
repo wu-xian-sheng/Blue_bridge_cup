@@ -38,8 +38,8 @@ void set_arr(int arr[], int sz)
   {
     arr[i] = -1;
   }
-  int sz = sizeof(arr) / sizeof(arr[0]);
-  cout << sz << endl;
+  int s = sizeof(arr) / sizeof(arr[0]);
+  cout << s << endl;
 }
 void print_arr(int arr[], int sz) 
 {
@@ -51,7 +51,7 @@ void print_arr(int arr[], int sz)
 }
 int main() 
 {
-  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
   int sz = sizeof(arr) / sizeof(arr[0]);
   set_arr(arr, sz);   //设置数组内容为-1
   print_arr(arr, sz); //打印数组内容
