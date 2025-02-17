@@ -199,12 +199,13 @@
 #include <string>
 using namespace std;
 
+typedef pair<int, int> PII; 
 const int N = 35;
 int n = 0;
 vector<int> p[N];
 
 
-typedef pair<int, int> PII; 
+
 
 
 PII find(int a)

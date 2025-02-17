@@ -113,128 +113,205 @@
 
 //双向链表的模拟实现
 
+//#include <iostream>
+//using namespace std;
+//
+//const int N = 1e5 + 10;
+//int h; // 头结点
+//int id; // 下一个元素分配的位置
+//int e[N]; // 数据域
+//int pre[N], ne[N]; // 前后指针域
+//// h 默认等于 0，指向的就是哨兵位
+//// 此时链表为空，没有任何几点，因此 ne[h] = 0
+//
+//int mp[N];
+//
+////头插 
+//void push_front(int x)
+//{
+//	//id++，标记新结点存储的位置;把新的元素存储下来:e[id]=x;
+//	id++;
+//	e[id] = x;
+//	mp[x] = id;
+//	 
+//	
+//	//修改新结点的前驱指针，让其指向哨兵位:pre[id]=h;
+//	pre[id] = h;
+//	//修改新结点的后继指针，让其指向哨兵位的下一个位置:ne[id]=ne[h];
+//	ne[id] = ne[h];
+//	
+//	//修改 y结点的前驱指针，让其指向新的结点:pre[ne[h]]=id;
+//	pre[ne[h]] = id;
+//	//修改哨兵位的后继指针，让其指向新的结点:ne[h]=id;
+//	ne[h] = id; 
+//}
+//
+//
+////遍历链表
+//void print()
+//{
+//	for(int i = ne[h]; i; i = ne[i])
+// 	{
+// 		cout << e[i] << " ";
+// 	}
+// 	cout << endl << endl;
+//}
+//
+//// 按值查找
+//// 查找元素 x 在链表中存储的位置
+//
+//int find(int x)
+//{
+//	// 用 mp 优化
+// 	return mp[x];
+// } 
+//
+//
+////在任意位置插入
+//void insert(int p, int x)
+//{
+//	//id++，标记新结点存储的位置;把新的元素存储下来:e[id]=x
+//	id++;
+//	e[id] = x;
+//	mp[x] = id; 
+//	
+//	//修改新结点的前驱指针，让其指向p位置:pre[id]=p
+//	pre[id] = p;
+//	//修改新结点的后继指针，让其指向p位置的下一个位置:ne[id]=ne[p]
+//	ne[id] = ne[p];
+//	
+//	//修改p下一个位置的前驱指针，让其指向新的结点:pre[ne[p]]=id
+//	pre[ne[p]] = id;
+//	//修改p的后继指针，让其指向新的结点:ne[p]=id
+//	ne[p] = id;
+// } 
+// 
+// 
+// //在任意位置之前插入元素
+//// 在存储位置为p的元素前面，插入新的元素x；
+// void  insert_front(int p, int x)
+// {
+// 	id++;
+// 	e[id] = x;
+// 	
+// 	pre[id] = pre[p];
+// 	ne[id] = p;
+// 	
+// 	ne[pre[p]] = id;
+// 	pre[p] = id;
+// }
+// 
+// 
+// 
+// 
+// //删除任意位置的元素
+// 
+// void erase(int p)
+// {
+// 	mp[e[p]] = 0;
+// 	ne[pre[p]] = ne[p];
+// 	pre[ne[p]] = pre[p];
+// }
+//  
+//
+//
+//int main()
+//{
+//	push_front(1);
+//	print();
+//	push_front(2);
+//	print();
+//	push_front(3);
+//	print();
+//	
+//	cout << find(3) << endl; 
+//	
+//	insert(1, 6);
+//	insert_front(1,8);
+//	print();
+//	
+//	erase(2);
+//	print();
+//	
+//	
+//	return 0;
+// } 
+
+
+
+
+//动态链表 - list（了解）
+
+//创建 list
+
 #include <iostream>
+#include <list>
 using namespace std;
 
-const int N = 1e5 + 10;
-int h; // 头结点
-int id; // 下一个元素分配的位置
-int e[N]; // 数据域
-int pre[N], ne[N]; // 前后指针域
-// h 默认等于 0，指向的就是哨兵位
-// 此时链表为空，没有任何几点，因此 ne[h] = 0
 
-int mp[N];
-
-//头插 
-void push_front(int x)
+void testadd()
 {
-	//id++，标记新结点存储的位置;把新的元素存储下来:e[id]=x;
-	id++;
-	e[id] = x;
-	mp[x] = id;
-	 
-	
-	//修改新结点的前驱指针，让其指向哨兵位:pre[id]=h;
-	pre[id] = h;
-	//修改新结点的后继指针，让其指向哨兵位的下一个位置:ne[id]=ne[h];
-	ne[id] = ne[h];
-	
-	//修改 y结点的前驱指针，让其指向新的结点:pre[ne[h]]=id;
-	pre[ne[h]] = id;
-	//修改哨兵位的后继指针，让其指向新的结点:ne[h]=id;
-	ne[h] = id; 
-}
-
-
-//遍历链表
-void print()
-{
-	for(int i = ne[h]; i; i = ne[i])
+ 	list<int> lt;
+ 	// 尾插
+ 	for(int i = 1; i <= 5; i++)
  	{
- 		cout << e[i] << " ";
+ 		lt.push_back(i);
+ 		print(lt);
  	}
- 	cout << endl << endl;
+ 
+ 
+ // 头插
+ 	for(int i = 1; i <= 5; i++)
+ 	{
+ 		l.push_front(i);
+ 		print(l);
+ 	}
 }
 
-// 按值查找
-// 查找元素 x 在链表中存储的位置
 
-int find(int x)
+
+// 删
+void testdelete()
 {
-	// 用 mp 优化
- 	return mp[x];
- } 
-
-
-//在任意位置插入
-void insert(int p, int x)
-{
-	//id++，标记新结点存储的位置;把新的元素存储下来:e[id]=x
-	id++;
-	e[id] = x;
-	mp[x] = id; 
-	
-	//修改新结点的前驱指针，让其指向p位置:pre[id]=p
-	pre[id] = p;
-	//修改新结点的后继指针，让其指向p位置的下一个位置:ne[id]=ne[p]
-	ne[id] = ne[p];
-	
-	//修改p下一个位置的前驱指针，让其指向新的结点:pre[ne[p]]=id
-	pre[ne[p]] = id;
-	//修改p的后继指针，让其指向新的结点:ne[p]=id
-	ne[p] = id;
- } 
+ 	list<int> lt;
+ 	// 尾插
+ 	for(int i = 1; i <= 5; i++)
+ 	{
+ 		lt.push_back(i);
+ 	}
  
- 
- //在任意位置之前插入元素
-// 在存储位置为p的元素前面，插入新的元素x；
- void  insert_front(int p, int x)
- {
- 	id++;
- 	e[id] = x;
- 	
- 	pre[id] = pre[p];
- 	ne[id] = p;
- 	
- 	ne[pre[p]] = id;
- 	pre[p] = id;
- }
- 
- 
- 
- 
- //删除任意位置的元素
- 
- void erase(int p)
- {
- 	mp[e[p]] = 0;
- 	ne[pre[p]] = ne[p];
- 	pre[ne[p]] = pre[p];
- }
-  
+ 	// 头插
+ 	for(int i = 5; i >= 1; i--)
+ 	{
+ 		lt.push_front(i);
+ 	}
+ 	// 头删
+ 	for(int i = 1; i <= 3; i++) lt.pop_front();
+ 	// 尾删
+ 	for(int i = 1; i <= 3; i++) lt.pop_back();
+ 	print(lt);
+}
 
 
 int main()
 {
-	push_front(1);
-	print();
-	push_front(2);
-	print();
-	push_front(3);
-	print();
-	
-	cout << find(3) << endl; 
-	
-	insert(1, 6);
-	insert_front(1,8);
-	print();
-	
-	erase(2);
-	print();
-	
-	
-	return 0;
- } 
+ 	list<int> lt; // 创建1个存储 int 类型的链表
+ 	
+ 	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
